@@ -5,6 +5,7 @@ import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +26,12 @@ public class StudentRestController {
   // define endpoint for "/students" - return a list of students
   @GetMapping("/students")
   public List<Student> getStudents() {
-
     return theStudents;
+  }
+
+  // defeine endpoint for "/students/{studentId}" - return student at index
+  @GetMapping("/students/{studentId}")
+  public Student getStudent(@PathVariable int studentId) {
+    return theStudents.get(studentId);
   }
 }
